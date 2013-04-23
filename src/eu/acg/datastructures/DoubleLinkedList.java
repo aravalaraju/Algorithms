@@ -94,6 +94,40 @@ public class DoubleLinkedList {
 		}
 	}
 
+	/*
+	 * Deletes the first node in the list
+	 */
+	public void deleteBeginning()
+	{
+		if (head.getNext() == null)
+		{
+			head = null;
+			tail = null;
+		}
+		else
+		{
+			head = head.getNext();
+			head.setPrev(null);
+		}
+	}
+
+	/*
+	 * Deletes the last node in the list
+	 */
+	public void deleteEnd()
+	{
+		if (head.getNext() == null)
+		{
+			head = null;
+			tail = null;
+		}
+		else
+		{
+			tail = tail.getPrev();
+			tail.setNext(null);
+		}
+	}
+
 	/**
 	 * Tests whether the list is empty
 	 * @return
@@ -103,7 +137,34 @@ public class DoubleLinkedList {
 		return (head == null);
 	}
 	
+	public void print()
+	{
+		DoubleNode current = head;
+		while (current != null)
+		{
+			System.out.print(current.getValue() + " ");
+			current = current.getNext();
+		}
+		System.out.println();
+	}
+	
 	public static void main(String[] args) {
 		DoubleLinkedList list = new DoubleLinkedList();
+		list.insertBeginning(6);
+		list.print();
+		list.insertBeginning(8);
+		list.print();
+		list.insertBeginning(2);
+		list.print();
+		list.insertEnd(0);
+		list.print();
+		list.insertEnd(9);
+		list.print();
+		list.deleteEnd();
+		list.print();
+		list.deleteEnd();
+		list.print();
+		list.deleteBeginning();
+		list.print();
 	}
 }
