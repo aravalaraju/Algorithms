@@ -128,6 +128,16 @@ public class DoubleLinkedList {
 		}
 	}
 
+	public DoubleNode getHead()
+	{
+		return head;
+	}
+
+	public DoubleNode getTail()
+	{
+		return tail;
+	}
+
 	/**
 	 * Tests whether the list is empty
 	 * @return
