@@ -19,84 +19,6 @@ public class SpiralMatrix {
 	}
 	
 	/**
-	 * The directions are encoded as follows:
-	 * 0 - N
-	 * 1 - E
-	 * 2 - S
-	 * 3 - W
-	 * @param direction
-	 * @return
-	 */
-	public int getNextDirection(int direction)
-	{
-		return (direction + 1) % 4;
-	}
-
-	/**
-	 * Updates the rowmin, given the direction we've just traversed
-	 * @param old_rowmin
-	 * @param direction
-	 * @return
-	 */
-	public int getNextRowmin(int old_rowmin, int direction)
-	{
-		// We increase the min row after we've gone east
-		int rowmin = old_rowmin;
-		if (direction == 1)
-			rowmin = old_rowmin + 1;
-		
-		return rowmin;
-	}
-
-	/**
-	 * Updates the rowmax, given the direction we've just traversed
-	 * @param old_rowmax
-	 * @param direction
-	 * @return
-	 */
-	public int getNextRowmax(int old_rowmax, int direction)
-	{
-		// We decrease the max row after we've gone west
-		int rowmax = old_rowmax;
-		if (direction == 3)
-			rowmax = old_rowmax - 1;
-		
-		return rowmax;
-	}
-
-	/**
-	 * Updates the colmin, given the direction we've just traversed
-	 * @param old_colmin
-	 * @param direction
-	 * @return
-	 */
-	public int getNextColmin(int old_colmin, int direction)
-	{
-		// We increase the min column after we've gone north
-		int colmin = old_colmin;
-		if (direction == 0)
-			colmin = old_colmin + 1;
-		
-		return colmin;
-	}
-
-	/**
-	 * Updates the colmax, given the direction we've just traversed
-	 * @param old_colmax
-	 * @param direction
-	 * @return
-	 */
-	public int getNextColmax(int old_colmax, int direction)
-	{
-		// We decrease the max column after we've gone south
-		int colmax = old_colmax;
-		if (direction == 2) 
-			colmax = old_colmax - 1;
-		
-		return colmax;
-	}
-
-	/**
 	 * Prints values going in a certain direction and within certain boundaries
 	 * @param direction
 	 * @param rowmin
@@ -140,6 +62,13 @@ public class SpiralMatrix {
 	 */
 	public void traverseSpiral()
 	{
+		/*
+		 * The directions are encoded as follows:
+		 * 0 - N
+		 * 1 - E
+		 * 2 - S
+		 * 3 - W
+  		*/
 		int direction = 1; // We start by going east
 		int rowmin = 0;
 		int rowmax = dim;
@@ -149,11 +78,17 @@ public class SpiralMatrix {
 		while (rowmin <= rowmax)
 		{
 			printValues(direction, rowmin, rowmax, colmin, colmax);
-			rowmin = getNextRowmin(rowmin, direction);
-			rowmax = getNextRowmax(rowmax, direction);
-			colmin = getNextColmin(colmin, direction);
-			colmax = getNextColmax(colmax, direction);
-			direction = getNextDirection(direction);
+			
+			// We increase the min row after we've gone east
+			if (direction == 1)	rowmin += 1;
+			// We decrease the max row after we've gone west
+			if (direction == 3)	rowmax -= 1;
+			// We increase the min column after we've gone north
+			if (direction == 0)	colmin += 1;
+			// We decrease the max column after we've gone south
+			if (direction == 2) colmax -= 1;
+			// Get the next direction
+			direction = (direction + 1) % 4;
 			
 //			System.out.print("New values:");
 //			System.out.print(" Direction:" + direction);
