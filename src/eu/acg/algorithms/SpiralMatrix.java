@@ -29,32 +29,24 @@ public class SpiralMatrix {
 	public void printValues(int direction, int rowmin, int rowmax, int colmin, int colmax) 
 	{
 		if (direction == 0) 
-		// Going north, we stick to the column and decrease the row 
-		{
+			// Going north, we stick to the column and decrease the row 
 			for (int i = rowmax-1; i >= rowmin; i--)
 				System.out.print(m[i][colmin] + " ");
-		}
 		else
 			if (direction == 2)
 				// Going south, we stick to the column and increase the row 
-			{
 				for (int i = rowmin; i < rowmax; i++)
 					System.out.print(m[i][colmax-1] + " ");
-			}
 		else
 			if (direction == 1)
-			// Going east, we stick to the row and increase the column 
-			{
+				// Going east, we stick to the row and increase the column 
 				for (int j = colmin; j < colmax; j++)
 					System.out.print(m[rowmin][j] + " ");			
-			}
-			else
+		else
 			if (direction == 3)
-			// Going west, we stick to the row and decrease the column 
-			{
+				// Going west, we stick to the row and decrease the column 
 				for (int j = colmax-1; j >= colmin; j--)
 					System.out.print(m[rowmax-1][j] + " ");			
-			}		
 	}
 	
 	/**
