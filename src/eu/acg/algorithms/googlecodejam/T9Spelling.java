@@ -42,15 +42,12 @@ public class T9Spelling {
 						group--;
 					
 					// times_pressed shows how many time the group button needs to be pressed
-					if (c == 115) times_pressed = 3;
-					else
-						if (c == 118) times_pressed = 2;
+					if (c == 115) times_pressed = 3; // if it's S
+					else 
+						if (c > 115)
+							times_pressed = (int)Math.floor(((int)c - 97) % group) - 1; 
 						else
-							if (c == 121) times_pressed = 2;
-							else
-								if (c == 122) times_pressed = 3;
-								else
-									times_pressed = (int)Math.floor(((int)c - 97) % 3); 
+							times_pressed = (int)Math.floor(((int)c - 97) % 3); 
 					
 					// .. so now we have to update it to start from 2
 					group += 2;
@@ -104,6 +101,5 @@ public class T9Spelling {
 		{
 			System.out.println("Cannot read from input file!");			
 		}
-
 	}
 }
