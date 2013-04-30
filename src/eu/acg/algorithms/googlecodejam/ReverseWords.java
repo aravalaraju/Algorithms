@@ -3,7 +3,7 @@
 // Date: 30.04.2013
 // Description: http://code.google.com/codejam/contest/351101/dashboard#s=p1
 //******************************************************************************
-package eu.acg.algorithms;
+package eu.acg.algorithms.googlecodejam;
 
 import java.util.Stack;
 import java.io.BufferedReader;
