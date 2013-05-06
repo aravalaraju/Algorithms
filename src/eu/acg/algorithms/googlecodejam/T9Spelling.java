@@ -54,7 +54,7 @@ public class T9Spelling {
 					// Here we also start from 0, but it should be from 1
 					times_pressed++;
 					
-					// If we are in the same group as last time, a space is needed
+					// If we are in the same group as for the last letter, a space is needed
 					if (old_group == group)	res += " ";
 					old_group = group;
 					
@@ -76,8 +76,8 @@ public class T9Spelling {
 		
 		try
 		{
-			br = new BufferedReader(new FileReader("E:\\Dev\\Algorithms\\input\\T9Spelling_C-large-practice.in"));
-			bw = new BufferedWriter(new FileWriter("E:\\Dev\\Algorithms\\input\\T9Spelling_C-large-practice.out"));
+			br = new BufferedReader(new FileReader("E:\\Dev\\Algorithms\\input\\C-small-practice.in"));
+			bw = new BufferedWriter(new FileWriter("E:\\Dev\\Algorithms\\input\\C-small-practice.out"));
 			
 			int nr_cases = Integer.parseInt(br.readLine());
 			int i = 0;
@@ -87,7 +87,7 @@ public class T9Spelling {
 				s = br.readLine();
 				System.out.println("Case #" + i + ": " + s);
 				System.out.println("Case #" + i + ": " + getConversion(s));
-//				bw.write("Case #" + (i+1) + ": " + getConversion(s) + "\n");
+				bw.write("Case #" + (i+1) + ": " + getConversion(s) + "\n");
 				i++;
 			}
 			
